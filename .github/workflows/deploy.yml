@@ -1,0 +1,24 @@
+name: Deploy to speedrungames.net
+
+# Auto-deploys to the portal on every push to main via the portal's reusable
+# workflow. Next.js static export (output: "export") emits out/, ingested into
+# the portal. Never hand-copy build output into the portal.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    uses: Brynrg/speedrungames/.github/workflows/deploy-game.yml@main
+    with:
+      slug: pokemonspeedrungen1
+      build-command: npm run build
+      dist-dir: out
+      status: live
+    secrets:
+      SPEEDRUNGAMES_TOKEN: ${{ secrets.SPEEDRUNGAMES_TOKEN }}
