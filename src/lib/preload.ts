@@ -1,7 +1,11 @@
 const imagePromiseCache = new Map<string, Promise<void>>();
 
+// Next's basePath does not rewrite raw `<img src>` strings, so prefix the
+// portal mount path (set in next.config.ts) ourselves. Falls back to "" in dev.
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export function getGen1ImageSrc(id: number): string {
-  return `/assets/gen1/${String(id).padStart(3, "0")}.png`;
+  return `${BASE_PATH}/assets/gen1/${String(id).padStart(3, "0")}.png`;
 }
 
 export function preloadImage(src: string): Promise<void> {
