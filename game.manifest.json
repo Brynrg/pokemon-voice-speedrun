@@ -8,5 +8,8 @@
   "version": "1.0.0",
   "emoji": "🎙️",
   "entry": "index.html",
-  "repo": "Brynrg/pokemon-voice-speedrun"
+  "repo": "Brynrg/pokemon-voice-speedrun",
+  "expectedAssets": [
+    { "dir": "assets/gen1", "ext": ".png", "min": 151 }
+  ]
 }
