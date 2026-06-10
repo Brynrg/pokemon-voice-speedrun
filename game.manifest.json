@@ -8,5 +8,9 @@
   "version": "1.0.0",
   "emoji": "🎙️",
   "entry": "index.html",
-  "repo": "Brynrg/pokemon-voice-speedrun"
+  "repo": "Brynrg/pokemon-voice-speedrun",
+  "assetLicenseSummary": "Gen 1 (#001–151) official artwork sprites, © Nintendo / Game Freak / The Pokémon Company. Non-commercial fan project. See ASSETS.md.",
+  "expectedAssets": [
+    { "dir": "assets/gen1", "ext": ".png", "min": 151 }
+  ]
 }
