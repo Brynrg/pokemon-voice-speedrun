@@ -8,9 +8,17 @@ async function loadImage(src: string): Promise<HTMLImageElement> {
 }
 
 function toSilhouetteDataUrl(image: HTMLImageElement): string {
+  const width = image.naturalWidth || image.width;
+  const height = image.naturalHeight || image.height;
+  if (!width || !height) {
+    // A 0×0 image (corrupt file, dimensionless source) would make getImageData
+    // throw; fall back to the base art so the run keeps going.
+    return image.src;
+  }
+
   const canvas = document.createElement("canvas");
-  canvas.width = image.naturalWidth || image.width;
-  canvas.height = image.naturalHeight || image.height;
+  canvas.width = width;
+  canvas.height = height;
 
   const context = canvas.getContext("2d");
   if (!context) {
